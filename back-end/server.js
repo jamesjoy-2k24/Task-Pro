@@ -1,13 +1,10 @@
+import "dotenv/config";
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-import dotenv from "dotenv";
 import userRoutes from "./routes/userRoutes.js";
 import taskRoutes from "./routes/taskRoutes.js";
 import { startDeadlineNotifier } from "./services/deadlineNotifier.js";
-
-// Load environment variables
-dotenv.config();
 
 const app = express();
 

@@ -1,7 +1,10 @@
 import nodemailer from "nodemailer";
 
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: process.env.EMAIL_SMTP || undefined,
+  port: process.env.EMAIL_PORT ? parseInt(process.env.EMAIL_PORT, 10) : undefined,
+  secure: process.env.EMAIL_PORT === "465", // true for port 465, false for other ports
+  service: process.env.EMAIL_SMTP ? undefined : "gmail",
   auth: {
     user: process.env.EMAIL,
     pass: process.env.EMAIL_PASS,
@@ -89,11 +92,22 @@ export const sendDeadlineEmail = async (
     </div>
   </div>`;
 
+  // Plain text fallback for better spam filter scoring
+  const text = `Hi ${userName},\n\nYou have ${totalCount} task${totalCount > 1 ? "s" : ""} that require attention.\n\n` +
+    (dueTasks.length > 0 ? `Due Today:\n` + dueTasks.map(t => `- ${t.title} (Due: ${t.deadline ? formatDate(t.deadline) : "No date"})`).join("\n") + `\n\n` : "") +
+    (overdueTasks.length > 0 ? `Overdue Tasks:\n` + overdueTasks.map(t => `- ${t.title} (Due: ${t.deadline ? formatDate(t.deadline) : "No date"})`).join("\n") + `\n\n` : "") +
+    `Log in to your Task Pro dashboard to manage them.`;
+
   const mailOptions = {
-    from: `"Shana.net Task Pro" <${process.env.EMAIL}>`,
+    from: `"Task Pro Support" <${process.env.EMAIL}>`,
     to: toEmail,
-    subject: `⏰ You have ${totalCount} task${totalCount > 1 ? "s" : ""} that need${totalCount === 1 ? "s" : ""} attention`,
+    subject: `Task Pro Update: Your agenda for today (${totalCount} task${totalCount > 1 ? "s" : ""})`,
+    text,
     html,
+    headers: {
+      "Precedence": "bulk",
+      "X-Auto-Response-Suppress": "OOF, AutoReply",
+    }
   };
 
   try {
