@@ -1,0 +1,184 @@
+.page-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #61b8ea 0%, #0c44b5 100%);
+  color: rgb(19, 19, 19);
+}
+
+/* Navbar - இடது logo, வலது links */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 80px;
+  background: rgba(233, 8, 8, 0.1);
+  backdrop-filter: blur(10px);
+  
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.logo img {
+  width: 45px;
+  height: 45px;
+  border-radius: 8px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  font-size: 20px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #bfdbfe;
+}
+
+.signup-btn {
+  background: rgb(247, 248, 249);
+  color: #2408da;
+  padding: 10px 24px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.signup-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Hero Section - gap 80px */
+.hero-section {
+  display: flex;
+  gap: 80px;
+  align-items: center;
+  padding: 100px 80px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.hero-left {
+  flex: 1;
+}
+
+.hero-left h1 {
+  font-size: 45px;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.hero-left h1 span {
+  color: #072956;
+}
+
+.desc {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #f8f9fc;
+  margin-bottom: 35px;
+  max-width: 400px;
+}
+
+.get-started-btn {
+  background: transparent;
+  color: rgb(16, 16, 17);
+  padding: 12px 32px;
+  border-radius: 25px;
+  border: 2px solid white;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.get-started-btn:hover {
+  background: rgb(31, 3, 172);
+  color: #3b70e3;
+}
+
+.hero-right {
+  flex: 1;
+}
+
+.hero-right img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+}
+
+/* Popup Overlay + Options */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 999;
+}
+
+.options-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 35px 40px;
+  border-radius: 15px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 1000;
+  min-width: 280px;
+}
+
+.options-popup h3 {
+  text-align: center;
+  color: #1e3a8a;
+  margin-bottom: 10px;
+}
+
+.option-btn {
+  text-decoration: none;
+  padding: 14px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.user-btn {
+  background: #2563eb;
+  color: white;
+}
+
+.user-btn:hover {
+  background: #1d4ed8;
+}
+
+.admin-btn {
+  background: #7c3aed;
+  color: white;
+}
+
+.admin-btn:hover {
+  background: #6d28d9;
+}
